@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/noseglid/base85.png?branch=master)](https://travis-ci.org/noseglid/base85)
-
 # base85
 
 Base85 encoder/decoder written in native javascript.
@@ -12,15 +10,17 @@ quotes (`'` and `"`) which needs escaping in many programming languages, and
 the [ZeroMQ][Base85ZeroMQ] specification contains `<` and `>` which need
 escaping in most (all?) [SGML][SGML] languages.
 
-IPv6 encoding should only be used for encoding IPv6 addresses. When using IPv6,
-input for encoding must always be 16 bytes, and input for decoding must always be 20 bytes.
+IPv6 encoding is implemented, even though [RFC 1924][Base85IPv6] *was*
+published on April 1st. It should only be used for encoding IPv6 addresses.
+When using IPv6, input for encoding must always be 16 bytes, and input for
+decoding must always be 20 bytes.
 
-ZeroMQ's version (`z85`) require [according to the specification][Base85ZeroMQ])
+ZeroMQ's version (`z85`) requires [according to the specification][Base85ZeroMQ])
 string input to be divisible by 5, and binary input to be divisible by 4.
 This module includes a `z85pad` version which uses the same alphabet but
 does not enforce, or indeed require, this restriction.
 
-The `Ascii85` encoding frames the base85 string between `<~` and `~>`.
+The `ascii85` encoding frames the base85 string between `<~` and `~>`.
 Use the alternate `a85` version if you don't want that.
 
 Supported encoding specifications
@@ -131,14 +131,26 @@ As IPv6 encoding only supports exactly 128 bits (16 bytes), this is not very use
 arbitrary data. Only use IPv6 if you're actually encoding IPv6 addresses.
 (Also note the issuance date of RFC 1924.)
 
+## History
+
+This module was originally written by Alexander Olsson <noseglid@gmail.com>,
+published [here][Olsson]. This fork adds streamlined setup code, more
+alphabets, and options for non-4-byte-aligned ZMP encoding.
+
+I plan to fold this back into Alexander's code, if possible.
+
 ## Bugs
+
+This module is intended to be a functional superset of all other base85
+codecs on [NPM][NPM]. If anything is missing, please file a bug.
 
 [IPv6 encoding specification (RFC1924)][Base85IPv6] requires 128-bit arithmetic,
 which is rather problematic. I'm thrilled to see that the author of the RFC took this
 in consideration, specifically - quote from the [RFC][Base85IPv6]: "This is not
 considered a serious drawback in the representation, but a flaw of the processor designs."
-Silly processor designers. Currently, this is implemented using an arbitrary precision algorithm,
-it's slow but it does the job. Now let's poke those processor designers for 128-bit processors.
+Silly processor designers. Currently, this is implemented using an
+arbitrary precision algorithm, it's slow but it does the job. Now let's
+poke those processor designers for 128-bit processors.
 
 [Base64]: http://en.wikipedia.org/wiki/Base64
 [Base85]: http://en.wikipedia.org/wiki/Ascii85
@@ -149,3 +161,5 @@ it's slow but it does the job. Now let's poke those processor designers for 128-
 [JSCompare]: http://stackoverflow.com/questions/359494/does-it-matter-which-equals-operator-vs-i-use-in-javascript-comparisons
 [SGML]: https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language
 [IPAddress]: https://www.npmjs.com/package/ip-address
+[Olsson]: https://github.com/noseglid/base85
+[NPM]: https://www.npmjs.com

@@ -1,7 +1,7 @@
 {
   "name": "base85",
-  "version": "3.1.0",
-  "description": "Base85 (Ascii85) encode and decode functionality",
+  "version": "3.2.0",
+  "description": "Base85 (Ascii85/btoa/ZMP) encoder and decoder",
   "main": "lib/base85.js",
   "typings": "lib/base85.d.ts",
   "scripts": {
@@ -17,21 +17,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/noseglid/base85"
+    "url": "https://github.com/smurfix/base85"
   },
   "keywords": [
     "base85",
+    "btoa",
     "ascii85",
-    "encode",
-    "decode",
-    "binary-to-text"
+    "Z85"
   ],
-  "author": "Alexander Olsson <noseglid@gmail.com>",
+  "author": "Matthias Urlichs <matthias@urlichs.de>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/noseglid/base85/issues"
+    "url": "https://github.com/smurfix/base85/issues"
   },
-  "homepage": "https://github.com/noseglid/base85",
+  "homepage": "https://github.com/smurfix/base85",
   "engines": {
     "node": ">=10.24.1"
   }
