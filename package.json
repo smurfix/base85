@@ -1,5 +1,5 @@
 {
-  "name": "base85",
+  "name": "base85-full",
   "version": "3.2.0",
   "description": "Base85 (Ascii85/btoa/ZMP) encoder and decoder",
   "main": "lib/base85.js",
